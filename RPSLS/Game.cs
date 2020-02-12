@@ -10,135 +10,140 @@ namespace RPSLS
     {
         //Variables
 
-        public int playerOneScore;
-        public int playerTwoScore;
-        public int computerScore;
-        public string playerOneEntry;
-        public string playerTwoEntry;
-        public string computerEntry;
-        public string whichGame;
-
+        Player Player1;
+        Player Player2;
+        string numberofPlayers;
+        string players;
+        int playerOneScore;
+        int playerTwoScore;
         
-        List<string> gestures = new List<string> { "rock", "paper", "scisor", "lizared", "spock" };
 
         //Constructor
+
         public Game()
         {
-            playerOneScore = 0;
-            playerTwoScore = 0;
-            computerScore = 0;
-            playerOneEntry = null;
-            playerTwoEntry = null;
-            computerEntry = null;
-            whichGame = null;
+        numberofPlayers = "";
+        Player1 = "";
+        Player2 = "";
+        players = "";
+
+        }
+        
 
 
+        //Methods
+
+        public void runGame()
+        {
+            players = GetNumberofPlayers();
+            setPlayers();
+            Player1.chooseGesture();
+            Player2.chooseGesture();
 
 
         }
         
-        //Methods
-
-
-        public void singleOrDoubleGame()
-        {
-            Console.WriteLine("If you would like to play by yourself type 'one'.  Otherwise type 'two' to play agianst the computer: ");
-            whichGame = Console.ReadLine();
-            
-            
-            //need to enter commands here for one or two players
-        }
-
-        public void printStartingScore()
-        {
-            Console.WriteLine("Starting score is: ");
-            Console.WriteLine("Player 1: ",playerOneScore);
-            Console.WriteLine("Player 1: ", playerTwoScore);
-        }
-
-        public void getPlayerOneEntry()
+        
+        
+        
+        
+        public string GetNumberofPlayers()
         {
             do
             {
-                Console.WriteLine("Player one, enter gestrure rock, paper, scisors, lizard, or spock");
+                Console.WriteLine("Enter 1 or 2 players: ");
+                numberofPlayers = Console.ReadLine();
 
-                playerOneEntry = Console.ReadLine();
-            }
-            while (playerOneEntry != gestures[0] || playerOneEntry != gestures[1] || playerOneEntry != gestures[2] || playerOneEntry != gestures[3] || playerOneEntry != gestures[4]);
+            } while (numberofPlayers != "1" || numberofPlayers != "2");
+
+            return numberofPlayers;                    
         }
-        public void getPlayerTwoEntry()
+
+
+        public void setPlayers()
         {
-            Console.WriteLine("Player two, enter gestrure: ");
-            playerTwoEntry = Console.ReadLine();
-        }
-
-        public void checkForWinner()
-        {
-            if(playerOneScore == 3)
+            if(numberofPlayers == "1")
             {
-                Console.WriteLine("Player 1 is the winner!");
+                Player1 = new Human();
+                Player2 = new AI();
             }
-            else if(playerTwoScore == 3)
+            else if(numberofPlayers == "2")
             {
-                Console.WriteLine("Player 2 is the winner!");
+                Player1 = new Human();
+                Player2 = new Human();
+
             }
         }
 
-        
-        
+               
         public void roundWinner()
         {
            
             while(playerOneScore < 3 && playerTwoScore < 3)
             {
-                if (playerOneEntry == playerTwoEntry)
+                if (Player1.gesture == Player2.gesture)
                 {
                     Console.WriteLine("Tie, no change in score.");
                 }
-                else if (playerOneEntry == gestures[1] && playerTwoEntry == gestures[0])
+                else if (Player1.gesture == Player1.gestures[1] && Player2.gesture == Player2.gestures[0])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
-                else if (playerOneEntry == gestures[1] && playerTwoEntry == gestures[4])
+                else if (Player1.gesture == Player1.gestures[1] && Player2.gesture == Player2.gestures[4])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
-                else if (playerOneEntry == gestures[0] && playerTwoEntry == gestures[2])
+                else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[2])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
-                else if (playerOneEntry == gestures[0] && playerTwoEntry == gestures[2])
+                else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[2])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
-                else if (playerOneEntry == gestures[2] && playerTwoEntry == gestures[1])
+                else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[1])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
-                else if (playerOneEntry == gestures[2] && playerTwoEntry == gestures[2])
+                else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[2])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
-                else if (playerOneEntry == gestures[3] && playerTwoEntry == gestures[4])
+                else if (Player1.gesture == Player1.gestures[3] && Player2.gesture == Player2.gestures[4])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
-                else if (playerOneEntry == gestures[2] && playerTwoEntry == gestures[1])
+                else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[1])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
-                else if (playerOneEntry == gestures[4] && playerTwoEntry == gestures[2])
+                else if (Player1.gesture == Player1.gestures[4] && Player2.gesture == Player2.gestures[2])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
-                else if (playerOneEntry == gestures[4] && playerTwoEntry == gestures[0])
+                else if (Player1.gesture == Player1.gestures[4] && Player2.gesture == Player2.gestures[0])
                 {
-                    playerOneScore++;
+                    Player1.Score++;
                 }
                 else
                 {
-                    playerTwoScore++;
+                    Player2.Score++;
                 }
+
+                Console.WriteLine("Player 1 score:  " + Player1.Score);
+                Console.WriteLine("Player 2 score:  " + Player2.Score);
+
+                if(Player1.Score == 3)
+                {
+                    Console.WriteLine("Player 1 wins!");
+                }
+                if(Player2.Score == 3)
+                {
+                    Console.WriteLine("Player 2 wins!");
+                }
+
+
+
             }
             
         }
