@@ -10,7 +10,7 @@ namespace RPSLS
     {
 
 
-        public override void chooseGesture()
+        public override string chooseGesture()
         {
                        
             do

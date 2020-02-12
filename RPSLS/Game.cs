@@ -12,8 +12,8 @@ namespace RPSLS
 
         Player Player1;
         Player Player2;
-        string numberofPlayers;
-        string players;
+        //string numberofPlayers;
+        
         int playerOneScore;
         int playerTwoScore;
         
@@ -22,10 +22,9 @@ namespace RPSLS
 
         public Game()
         {
-        numberofPlayers = "";
-        Player1 = "";
-        Player2 = "";
-        players = "";
+        //numberofPlayers = "";
+        
+        
 
         }
         
@@ -35,32 +34,34 @@ namespace RPSLS
 
         public void runGame()
         {
-            players = GetNumberofPlayers();
-            setPlayers();
-            Player1.chooseGesture();
-            Player2.chooseGesture();
+            string players = GetNumberofPlayers();
+            setPlayers(players);
 
+            do
+            {
+                Player1.chooseGesture();
+                Player2.chooseGesture();
+                roundWinner();
+            } while (Player1.Score < 3 && Player2.Score < 3);            
+            
 
         }
-        
-        
-        
-        
-        
+               
         public string GetNumberofPlayers()
         {
+            string numberofPlayers;
             do
             {
                 Console.WriteLine("Enter 1 or 2 players: ");
                 numberofPlayers = Console.ReadLine();
 
-            } while (numberofPlayers != "1" || numberofPlayers != "2");
+            } while (numberofPlayers != "1" && numberofPlayers != "2");
 
             return numberofPlayers;                    
         }
 
 
-        public void setPlayers()
+        public void setPlayers(string numberofPlayers)
         {
             if(numberofPlayers == "1")
             {
@@ -75,76 +76,72 @@ namespace RPSLS
             }
         }
 
-               
+
         public void roundWinner()
         {
-           
-            while(playerOneScore < 3 && playerTwoScore < 3)
+            if (Player1.gesture == Player2.gesture)
             {
-                if (Player1.gesture == Player2.gesture)
-                {
-                    Console.WriteLine("Tie, no change in score.");
-                }
-                else if (Player1.gesture == Player1.gestures[1] && Player2.gesture == Player2.gestures[0])
-                {
-                    Player1.Score++;
-                }
-                else if (Player1.gesture == Player1.gestures[1] && Player2.gesture == Player2.gestures[4])
-                {
-                    Player1.Score++;
-                }
-                else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[2])
-                {
-                    Player1.Score++;
-                }
-                else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[2])
-                {
-                    Player1.Score++;
-                }
-                else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[1])
-                {
-                    Player1.Score++;
-                }
-                else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[2])
-                {
-                    Player1.Score++;
-                }
-                else if (Player1.gesture == Player1.gestures[3] && Player2.gesture == Player2.gestures[4])
-                {
-                    Player1.Score++;
-                }
-                else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[1])
-                {
-                    Player1.Score++;
-                }
-                else if (Player1.gesture == Player1.gestures[4] && Player2.gesture == Player2.gestures[2])
-                {
-                    Player1.Score++;
-                }
-                else if (Player1.gesture == Player1.gestures[4] && Player2.gesture == Player2.gestures[0])
-                {
-                    Player1.Score++;
-                }
-                else
-                {
-                    Player2.Score++;
-                }
-
-                Console.WriteLine("Player 1 score:  " + Player1.Score);
-                Console.WriteLine("Player 2 score:  " + Player2.Score);
-
-                if(Player1.Score == 3)
-                {
-                    Console.WriteLine("Player 1 wins!");
-                }
-                if(Player2.Score == 3)
-                {
-                    Console.WriteLine("Player 2 wins!");
-                }
-
-
-
+                Console.WriteLine("Tie, no change in score.");
             }
+            else if (Player1.gesture == Player1.gestures[1] && Player2.gesture == Player2.gestures[0])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[1] && Player2.gesture == Player2.gestures[4])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[2])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[2])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[1])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[2])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[3] && Player2.gesture == Player2.gestures[4])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[1])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[4] && Player2.gesture == Player2.gestures[2])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[4] && Player2.gesture == Player2.gestures[0])
+            {
+                Player1.Score++;
+            }
+            else
+            {
+                Player2.Score++;
+            }
+
+            Console.WriteLine("Player 1 score:  " + Player1.Score);
+            Console.WriteLine("Player 2 score:  " + Player2.Score);
+
+            if (Player1.Score == 3)
+            {
+                Console.WriteLine("Player 1 wins!");
+            }
+            if (Player2.Score == 3)
+            {
+                Console.WriteLine("Player 2 wins!");
+            }
+            Console.ReadLine();
+
+            
             
         }
 

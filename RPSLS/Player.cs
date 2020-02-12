@@ -25,7 +25,7 @@ namespace RPSLS
 
 
         //Method
-        public abstract void chooseGesture();
+        public abstract string chooseGesture();
 
     }
     
