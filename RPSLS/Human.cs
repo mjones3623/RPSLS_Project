@@ -18,10 +18,11 @@ namespace RPSLS
                 Console.WriteLine("Choose, and type, either rock, paper, scisors, lizard, or spock");
 
                 gesture = Console.ReadLine();
+                
                 return gesture;
             }
             while (gesture != gestures[0] || gesture != gestures[1] || gesture != gestures[2] || gesture != gestures[3] || gesture != gestures[4]);
-
+            
 
 
             

@@ -40,8 +40,11 @@ namespace RPSLS
             do
             {
                 Player1.chooseGesture();
+                Console.WriteLine("Player 1 chooses: " +Player1.gesture);
                 Player2.chooseGesture();
+                Console.WriteLine("Player 2 chooses: " +Player2.gesture);
                 roundWinner();
+
             } while (Player1.Score < 3 && Player2.Score < 3);            
             
 
