@@ -16,7 +16,7 @@ namespace RPSLS
         public override string chooseGesture()
         {
 
-            int randomGestureNumber = new Random().Next(0, 6);
+            int randomGestureNumber = new Random().Next(0, 5);
             gesture = gestures[randomGestureNumber];
 
             return gesture;

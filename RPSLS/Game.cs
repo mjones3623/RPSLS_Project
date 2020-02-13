@@ -14,17 +14,14 @@ namespace RPSLS
         Player Player2;
         //string numberofPlayers;
         
-        int playerOneScore;
-        int playerTwoScore;
-        
+                
 
         //Constructor
 
         public Game()
         {
-        //numberofPlayers = "";
-        
-        
+
+
 
         }
         
@@ -82,9 +79,21 @@ namespace RPSLS
 
         public void roundWinner()
         {
+            //Round is a tie
             if (Player1.gesture == Player2.gesture)
             {
                 Console.WriteLine("Tie, no change in score.");
+                
+            }
+
+            //Player One Wins
+            else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[2])
+            {
+                Player1.Score++;
+            }
+            else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[3])
+            {
+                Player1.Score++;
             }
             else if (Player1.gesture == Player1.gestures[1] && Player2.gesture == Player2.gestures[0])
             {
@@ -94,19 +103,11 @@ namespace RPSLS
             {
                 Player1.Score++;
             }
-            else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[2])
-            {
-                Player1.Score++;
-            }
-            else if (Player1.gesture == Player1.gestures[0] && Player2.gesture == Player2.gestures[2])
-            {
-                Player1.Score++;
-            }
             else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[1])
             {
                 Player1.Score++;
             }
-            else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[2])
+            else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[3])
             {
                 Player1.Score++;
             }
@@ -114,7 +115,7 @@ namespace RPSLS
             {
                 Player1.Score++;
             }
-            else if (Player1.gesture == Player1.gestures[2] && Player2.gesture == Player2.gestures[1])
+            else if (Player1.gesture == Player1.gestures[3] && Player2.gesture == Player2.gestures[1])
             {
                 Player1.Score++;
             }
@@ -126,11 +127,49 @@ namespace RPSLS
             {
                 Player1.Score++;
             }
-            else
+            //Player Two Wins
+            else if (Player2.gesture == Player2.gestures[0] && Player1.gesture == Player1.gestures[2])
+            {
+                Player2.Score++;
+            }
+            else if (Player2.gesture == Player2.gestures[0] && Player1.gesture == Player1.gestures[3])
+            {
+                Player2.Score++;
+            }
+            else if (Player2.gesture == Player2.gestures[1] && Player1.gesture == Player1.gestures[0])
+            {
+                Player2.Score++;
+            }
+            else if (Player2.gesture == Player2.gestures[1] && Player1.gesture == Player1.gestures[4])
+            {
+                Player2.Score++;
+            }
+            else if (Player2.gesture == Player2.gestures[2] && Player1.gesture == Player1.gestures[1])
+            {
+                Player2.Score++;
+            }
+            else if (Player2.gesture == Player2.gestures[2] && Player1.gesture == Player1.gestures[3])
+            {
+                Player2.Score++;
+            }
+            else if (Player2.gesture == Player2.gestures[3] && Player1.gesture == Player1.gestures[4])
+            {
+                Player2.Score++;
+            }
+            else if (Player2.gesture == Player2.gestures[3] && Player1.gesture == Player1.gestures[1])
+            {
+                Player2.Score++;
+            }
+            else if (Player2.gesture == Player2.gestures[4] && Player1.gesture == Player1.gestures[2])
+            {
+                Player2.Score++;
+            }
+            else if (Player2.gesture == Player2.gestures[4] && Player1.gesture == Player1.gestures[0])
             {
                 Player2.Score++;
             }
 
+           
             Console.WriteLine("Player 1 score:  " + Player1.Score);
             Console.WriteLine("Player 2 score:  " + Player2.Score);
 
@@ -142,6 +181,7 @@ namespace RPSLS
             {
                 Console.WriteLine("Player 2 wins!");
             }
+            Console.WriteLine("Hit enter to contunue");
             Console.ReadLine();
 
             
