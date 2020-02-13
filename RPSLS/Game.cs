@@ -52,7 +52,7 @@ namespace RPSLS
             string numberofPlayers;
             do
             {
-                Console.WriteLine("Enter 1 or 2 players: ");
+                Console.WriteLine("Enter 1 (playing against the computer), or 2 (human) players: ");
                 numberofPlayers = Console.ReadLine();
 
             } while (numberofPlayers != "1" && numberofPlayers != "2");
